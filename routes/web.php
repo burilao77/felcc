@@ -15,3 +15,12 @@ Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/staff', 'PagesController@staff');
+
+
+
+//para las denuncias
+
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('complaint', 'ComplaintController');
+});
+
