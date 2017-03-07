@@ -5,7 +5,8 @@
              <div class="top-menu">
                  <span class="menu"></span>
                  <ul class="navig">
-                     <li class="active">{!! link_to_action('PagesController@home', $title = 'Inicio', $parameters = [], $attributes = []) !!}</li>
+                   <!-- 'class' => ($this->request->params['action'] == 'home') ? 'active' : 'inactive' -->
+                     <li>{!! link_to_action('PagesController@home', $title = 'Inicio', $parameters = [], $attributes = []) !!}</li>
                      <li>{!! link_to_action('PagesController@about', $title = 'Institución', $parameters = [], $attributes = []) !!}
                      </li>
                      <li><a href="program.html">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</a></li>
