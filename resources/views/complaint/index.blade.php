@@ -40,10 +40,11 @@
                             <td>{{ $complaint->updated_at->format('d-m-Y') }}</td>
                             <td>
                                 <form action="{{route('complaint.destroy', $complaint->id)}}" method="post">
-                                <input type="hidden" name="_method" value="delete">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_method" value="delete"> 
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">  
                                 <a href="{{route('complaint.edit', $complaint->id)}}" class="btn btn-primary">Edit</a>
-                                <input type="submit" class="btn btn-danger" onclick="return confirm('Esta seguro de Eliminar esta Denuncia');" name="name" value="delete">
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('Esta seguro de Eliminar esta Denuncia');" name="name" value="delete">  
+
                                 </form>
                             </td>
                         </tr>
@@ -51,5 +52,4 @@
                     </table>
         </div>
 
-</div>
 @stop

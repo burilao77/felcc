@@ -28,7 +28,7 @@
                 {!! Form::select('categories', ['abuse' => 'Abuso', 'homicide' => 'Homicidio', 'stole' => 'Robo'], 'mistreatment', ['class' => 'form-control', 'required'])!!}
             </div>
              <hr>
-             <h3>Datos del Denunciante</h3>
+             <h3>Formulario del Denunciante</h3>
              <br>
              <div class="form-group">
                 {!! Form::label('nameDenouncer', 'Nombre') !!}
@@ -55,7 +55,7 @@
                 {!! Form::text('addressDenouncer', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa la dirección'])!!}
             </div>
                           <hr>
-             <h3>Datos del Denunciado</h3>
+             <h3>Fornulario del Denunciado</h3>
              <br>
              <div class="form-group">
                 {!! Form::label('nameDenouncedr', 'Nombre') !!}

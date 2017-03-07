@@ -7,8 +7,8 @@
 
 <div class="gallery">
      <div class="container">
-         <h2>Gallery</h2>
-         <div class="event-pics">
+         <h2>Casos resueltos</h2>
+<!--          <div class="event-pics">
                 <a class="fancybox" href="images/1.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/1.jpg" class="img-style row6" alt=""><span> </span></a>
                 <a class="fancybox" href="images/2.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/2.jpg" class="img-style row6" alt=""><span> </span></a>
                 <a class="fancybox" href="images/3.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/3.jpg" class="img-style row6" alt=""><span> </span></a>
@@ -24,13 +24,13 @@
                 <a class="fancybox" href="images/11.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/11.jpg" class="img-style row6" alt=""><span> </span></a>
                 <a class="fancybox" href="images/1.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/1.jpg" class="img-style row6" alt=""><span> </span></a>
                 <div class="clearfix"></div>
-         </div>
+         </div> -->
      </div>
 </div>
 <!---->
 <div class="footer">
      <div class="container">
-         <div class="ftr-sec">
+         <!-- <div class="ftr-sec">
              <div class="col-md-4 ftr-grid">
                  <h3>Text Module</h3>
                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut odio ut quam convallis ultricies. Morbi rutrum lectus tortor. Cras vitae semper mi, et feugiat dolor.</p>
@@ -57,15 +57,17 @@
                      <li><a href="about.html"><span></span>Team</a></li>
                      <li><a href="contact.html"><span></span>Contact</a></li>
                  </ul>
-             </div>
-             <div class="clearfix"></div>
+             </div> -->
+           <!--   <div class="clearfix"></div> -->
          </div>
      </div>
 </div>
 <!---->
+
+
 <div class="copywrite">
      <div class="container">
-         <p>Copyright © 2015 University. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+         <p>VERÓNICA FLORES UMSS 2017 </p>
      </div>
 </div>
 

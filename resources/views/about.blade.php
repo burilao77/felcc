@@ -8,7 +8,7 @@
 <div class="about-sec">
      <div class="container">
           <div class="about-head">
-            <h2>About</h2>
+            <h2>Zonas</h2>
             <h4>Etiam in enim laoreet neque feugiat neque.</h4>
             <p>Suspendisse egestas ut nisi ac gravida. Suspendisse eget ipsum non mi luctus facilisis ac et nisi.
             Aliquam et neque sit amet tellus scelerisque interdum vel id turpis. Nunc lacinia nec ex id porta. Praesent sagittis massa sit amet nulla varius porttitor non eget nulla. Sed non finibus augue.
@@ -30,29 +30,23 @@
              <div class="clearfix"></div>
           </div>
           <div class="our_work">
-             <h3>Our Campus</h3>
+             <h3>Estructura Organizativa</h3>
              <div class="blog-section">
                      <div class="col-md-4 camp-grid">
                          <a href="single.html"><img src="images/u1.jpg" class="img-responsive" alt=""/></a>
-                         <h4><a href="single.html">University</a></h4>
-                         <p>Quisque volutpat odio sit amet mi volutpat, a bibendum ante vulputate. Praesent bibendum lorem
-                         non sem cursus, eu tempus leo condimentum. Sed nec ullamcorper massa.</p>
-                         <a href="single.html" class="more">[ Read More..]</a>
+                         <h4><a href="single.html">Jefatura Nacional de Área Administrativa.</a></h4>
+                         <p>Promover actividades investigativas de delitos cometidos en más de un Departamento del país o en el ámbito internacional.Desarrollar, mantener y difundir a través de la coordinación institucional e interinstitucional sistemas de información criminal de carácter nacional paraefectuar un seguimiento permanente de los antecedentes, con la finalidad de tener disponibilidad inmediata de toda la información necesaria para apoyar las investigaciones.</p>
                      </div>
                      <div class="col-md-4 camp-grid">
                          <a href="single.html"><img src="images/u2.jpg" class="img-responsive" alt=""/></a>
-                         <h4><a href="single.html">Class Rooms</a></h4>
-                         <p>Quisque volutpat odio sit amet mi volutpat, a bibendum ante vulputate. Praesent bibendum lorem
-                         non sem cursus, eu tempus leo condimentum. Sed nec ullamcorper massa.</p>
-                         <a href="single.html" class="more">[ Read More..]</a>
-                     </div>
+                         <h4><a href="single.html">Jefatura Nacional de Área Operativa.</a></h4>
+                         <p>Recibir, registrar y llevar archivos actualizados de la correspondencia recibida y expedida, además de proporcionar la información requerida.Preparar la correspondencia a ser contestada por la Dirección en lenguaje comprensible, claro y conciso.Guardar reserva sobre el contenido de la documentación evitando que sea de conocimiento de personas ajenas a la repartición.Centralizar la documentación relativa a sus funciones y aquella que le sea expresamente encomendada.</p>
+                        </div>
                      <div class="col-md-4 camp-grid">
                          <a href="single.html"><img src="images/u3.jpg" class="img-responsive" alt=""/></a>
-                         <h4><a href="single.html">Liberary</a></h4>
-                         <p>Quisque volutpat odio sit amet mi volutpat, a bibendum ante vulputate. Praesent bibendum lorem
-                         non sem cursus, eu tempus leo condimentum. Sed nec ullamcorper massa.</p>
-                         <a href="single.html" class="more">[ Read More..]</a>
-                     </div>
+                         <h4><a href="single.html">Direcciones Departamentales y Regionales.</a></h4>
+                         <p>Asumir defensa judicial – Técnica de la Fuerza Especial de Lucha Contra el Crimen y de sus miembros cuando sean afectados con asuntos judiciales o administrativos.Recibir, revisar y dar curso legal a trámites; rechazar, memoriales, solicitudes,peticiones, que no guarden las formalidades legales, asimismo el trámite de ordenes judiciales, requerimientos fiscales, representarlos si existiesen causales que ameriten tal actuación.</p>
+                        </div>
                   <div class="clearfix"></div>
              </div>
          </div>
@@ -97,7 +91,7 @@
 <!---->
 <div class="copywrite">
      <div class="container">
-         <p>Copyright © 2015 University. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+         <p>VERÓNICA FLORES UMSS 2017 </p>
      </div>
 </div>
 <!---->

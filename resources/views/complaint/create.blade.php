@@ -24,14 +24,19 @@
             </div>
             <div class="form-group">
                 {!! Form::label('categories', 'Categoría') !!}
-                {!! Form::select('categories', ['abuse' => 'Abuso', 'homicide' => 'Homicidio', 'stole' => 'Robo'], 'mistreatment', ['class' => 'form-control', 'required'])!!}
+                {!! Form::select('categories', ['abuse' => 'Abuso', 'homicide' => 'Homicidio', 'stole' => 'Robo','violation'=>'violacion','missing people'=>'personas desaparecidas','Femicides'=> 'feminicidios' ], 'mistreatment', ['class' => 'form-control', 'required'])!!}
             </div>
              <hr>
-             <h3>Datos del Denunciante</h3>
+             
+             <h3>Formulario del Denunciante</h3>
              <br>
              <div class="form-group">
                 {!! Form::label('nameDenouncer', 'Nombre') !!}
                 {!! Form::text('nameDenouncer', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el nombre'])!!}
+             </div>
+             <div class="form-group">
+                {!! Form::label('nameDenouncer', 'Apellido') !!}
+                {!! Form::text('nameDenouncer', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el apellido'])!!}
              </div>
              <div class="form-group">
                 {!! Form::label('ageDenouncer', 'Edad en Años') !!}
@@ -54,7 +59,8 @@
                 {!! Form::text('addressDenouncer', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa la dirección'])!!}
             </div>
                           <hr>
-             <h3>Datos del Denunciado</h3>
+             
+             <h3>Formulario del Denunciado</h3>
              <br>
              <div class="form-group">
                 {!! Form::label('nameDenouncedr', 'Nombre') !!}
