@@ -6,12 +6,12 @@
                  <span class="menu"></span>
                  <ul class="navig">
                    <!-- 'class' => ($this->request->params['action'] == 'home') ? 'active' : 'inactive' -->
-                     <li>{!! link_to_action('PagesController@home', $title = 'Inicio', $parameters = [], $attributes = []) !!}</li>
-                     <li>{!! link_to_action('PagesController@about', $title = 'Institución', $parameters = [], $attributes = []) !!}
+                     <li class="{{ Request::is('/') ? 'active' : '' }}">{!! link_to_action('PagesController@home', $title = 'Inicio', $parameters = [], $attributes = []) !!}</li>
+                     <li class="{{ Request::is('about') ? 'active' : '' }}">{!! link_to_action('PagesController@about', $title = 'Institución', $parameters = [], $attributes = []) !!}
                      </li>
-                     <li><a href="program.html">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</a></li>
-                     <li>{!! link_to_action('PagesController@staff', $title = 'Personal', $parameters = [], $attributes = []) !!}</li>
-                     <li>{!! link_to_action('PagesController@contact', $title = 'Reportes', $parameters = [], $attributes = []) !!}</li>
+                     <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
+                     <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Personal', $parameters = [], $attributes = []) !!}</li>
+                     <li class="{{ Request::is('contact') ? 'active' : '' }}">{!! link_to_action('PagesController@contact', $title = 'Reportes', $parameters = [], $attributes = []) !!}</li>
                  </ul>
              </div>
               <!-- script-for-menu -->
