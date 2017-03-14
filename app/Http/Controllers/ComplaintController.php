@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
+use Charts;
 use App\Complaint;
 
 class ComplaintController extends Controller
@@ -95,6 +96,14 @@ class ComplaintController extends Controller
         // tratando de acer el detalle
 /*        $complaint = $this->Complaint->find($id);
         return view('complaint.show', compact('complaint'));*/
+       $chart = Charts::database(Complaint::all(), 'bar', 'highcharts')
+      ->title("Porcentaje de Delitos")
+      ->elementLabel("Total")
+      ->dimensions(1000, 500)
+      ->responsive(false)
+      ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
+
+        return view('complaint.show', ['chart' => $chart]);
     }
 
     /**
@@ -171,4 +180,17 @@ class ComplaintController extends Controller
         $complaint->delete();
         return redirect()->route('complaint.index')->with('alert-success', 'La denuncia fue eliminada');
     }
+
+/*    public function contact()
+    {
+      $chart = Charts::database(Complaint::all(), 'bar', 'highcharts')
+      ->title("Porcentaje de Delitos")
+      ->elementLabel("Total")
+      ->dimensions(1000, 500)
+      ->responsive(false)
+      ->groupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
+
+        return view('complaint.contact', ['chart' => $chart]);
+
+    }*/
 }

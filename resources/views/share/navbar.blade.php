@@ -12,7 +12,9 @@
                      </li>
                      <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
                      <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Personal', $parameters = [], $attributes = []) !!}</li>
-                     <li class="{{ Request::is('contact') ? 'active' : '' }}">{!! link_to_action('PagesController@contact', $title = 'Reportes', $parameters = [], $attributes = []) !!}</li>
+                    <li class="{{ Request::is('complaint/show') ? 'active' : '' }}">
+                        {!! link_to('complaint/show', $title = 'Reportes', $attributes = [], $secure = null) !!}
+                    </li>
                     <!-- nab condicional-->
                      @if(Auth::guest())
                     <li>{!! link_to_route('login', $title = 'Ingresar') !!}

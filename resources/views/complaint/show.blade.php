@@ -10,7 +10,7 @@
       <div class="main-head-section">
                     <h2>Reportes</h2>
 
-
+                 {!! $chart->render() !!}
       </div>
         <div class="clearfix"> </div>
      </div>
