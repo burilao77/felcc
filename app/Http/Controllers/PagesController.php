@@ -8,9 +8,9 @@ use App\Http\Requests;
 class PagesController extends Controller
 {
     //
-    public function home()
+    public function home2()
     {
-        return view('home');
+        return view('home2');
     }
 
     public function about()

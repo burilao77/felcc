@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
+Route::get('/', 'PagesController@home2');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/staff', 'PagesController@staff');
@@ -24,3 +24,7 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('complaint', 'ComplaintController');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

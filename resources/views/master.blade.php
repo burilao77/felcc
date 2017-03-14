@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="icon" type="image/png" href="../images/favicon.png" sizes="18x18">
     <title> @yield('title') </title>
      {!!Html::style('css/bootstrap.css')!!}
      {!!Html::style('css/master.css')!!}
-	      {!!Html::script('/js/jquery.min.js')!!}
+          {!!Html::script('/js/jquery.min.js')!!}
      {!!Html::script('/js/bootstrap.js')!!}
      {!!Html::style('css/font-awesome.min.css')!!}
      {!!Html::style('css/style.css')!!}

@@ -12,7 +12,7 @@
     <h2>Crear Denuncia</h2>
 </div>
     {!! Form::open(['route' => 'complaint.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs nav-justified" role="tablist">
     <li role="presentation" class="active">
       <a href="#denuncia" aria-controls="denuncia" role="tab" data-toggle="tab">Datos Denuncia</a>
     </li>
