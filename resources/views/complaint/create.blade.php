@@ -29,10 +29,7 @@
     <div role="tabpanel" class="tab-pane active" id="denuncia">
         <div class="col-xs-9">
             <div class="panel-body">
-                <div class="form-group">
-                    {!! Form::label('title', 'Titulo') !!}
-                    {!! Form::text('title', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa un Titulo'])!!}
-                </div>
+
                 <div class="form-group">
                 {!! Form::label('description', 'Descripción') !!}
                 {!! Form::textarea('description', null, ['class' => 'form-control','size' => '30x5', 'required', 'placeholder' => 'Ingresa una Descripción']) !!}
@@ -40,6 +37,10 @@
                 <div class="form-group">
                     {!! Form::label('categories', 'Categoría') !!}
                     {!! Form::select('categories', ['abuse' => 'Abuso', 'homicide' => 'Homicidio', 'Stole' => 'Robo'], 'abuse', ['class' => 'form-control', 'required'])!!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('active', 'Estado') !!}
+                    {!! Form::checkbox('active', 'on', false, ['class' => 'form-control'])!!}
                 </div>
             </div>
         </div>

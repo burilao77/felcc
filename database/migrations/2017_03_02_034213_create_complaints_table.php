@@ -15,8 +15,8 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
             $table->text('description');
+            $table->boolean('active');
             $table->enum('categories', ['homicide', 'abuse', 'Stole']);
             $table->string('nameDenouncer');
             $table->integer('ageDenouncer');
@@ -25,7 +25,6 @@ class CreateComplaintsTable extends Migration
             $table->integer('phoneDenouncer');
             $table->string('addressDenouncer');
             $table->string('nameDenounced');
-
             $table->enum('genderDenounced', ['male', 'female']);
             $table->integer('phoneDenounced');
             $table->string('addressDenounced');

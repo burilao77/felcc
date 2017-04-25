@@ -15,10 +15,7 @@
         <div class="panel-body">
         {!! Form::model($complaint,[ 'route' => ['complaint.update', $complaint->id], 'method' => 'PUT']) !!}
         <input type="hidden" name="_method" value="PATCH">
-            <div class="form-group">
-                {!! Form::label('title', 'Título') !!}
-                {!! Form::text('title', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa un Titulo'])!!}
-            </div>
+
             <div class="form-group">
                 {!! Form::label('description', 'Descripción') !!}
                 {!! Form::text('description', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa una Descripción']) !!}

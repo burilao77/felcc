@@ -20,6 +20,8 @@ Route::get('/staff', 'PagesController@staff');
 
 //para las denuncias
 
+Route::get('complaint/process', 'ComplaintController@process');
+Route::get('complaint/success', 'ComplaintController@success');
 
 Route::group(['middleware' => ['web']], function(){
     Route::resource('complaint', 'ComplaintController');

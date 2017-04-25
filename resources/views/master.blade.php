@@ -8,9 +8,11 @@
     {!! Charts::assets() !!}
     <title> @yield('title') </title>
      {!!Html::style('css/bootstrap.css')!!}
+     {!!Html::style('css/bootstrap-switch.min.css')!!}
      {!!Html::style('css/master.css')!!}
           {!!Html::script('/js/jquery.min.js')!!}
      {!!Html::script('/js/bootstrap.js')!!}
+     {!!Html::script('/js/bootstrap-switch.min.js')!!}
      {!!Html::style('css/font-awesome.min.css')!!}
      {!!Html::style('css/style.css')!!}
 

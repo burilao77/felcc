@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\ComplaintCreateRequest;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use Charts;
 use App\Complaint;
+
 
 class ComplaintController extends Controller
 {
@@ -44,12 +47,13 @@ class ComplaintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComplaintCreateRequest $request)
     {
         //
          $this->validate($request,[
-            'title' => 'required',
+
             'description' => 'required',
+           
                'categories' => 'required',
                'nameDenouncer' => 'required',
                'ageDenouncer' => 'required',
@@ -64,8 +68,9 @@ class ComplaintController extends Controller
             ]);
         //guardando los datos
         $complaint = new complaint;
-        $complaint->title = $request->title;
+
         $complaint->description = $request->description;
+        $complaint->active = $request->active;
         $complaint->categories = $request->categories;
         $complaint->nameDenouncer = $request->nameDenouncer;
         $complaint->ageDenouncer = $request->ageDenouncer;
@@ -96,14 +101,21 @@ class ComplaintController extends Controller
         // tratando de acer el detalle
 /*        $complaint = $this->Complaint->find($id);
         return view('complaint.show', compact('complaint'));*/
-       $chart = Charts::database(Complaint::all(), 'bar', 'highcharts')
+       $chart = Charts::database(Complaint::all(), 'pie', 'highcharts')
       ->title("Porcentaje de Delitos")
       ->elementLabel("Total")
       ->dimensions(1000, 500)
       ->responsive(false)
       ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
 
-        return view('complaint.show', ['chart' => $chart]);
+        $chart2 = Charts::database(Complaint::all(), 'bar', 'highcharts')
+      ->title("Porcentaje de Delitos")
+      ->elementLabel("Total")
+      ->dimensions(1000, 500)
+      ->responsive(false)
+      ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
+
+        return view('complaint.show', ['chart' => $chart, 'chart2' => $chart2]);
     }
 
     /**
@@ -132,7 +144,7 @@ class ComplaintController extends Controller
         //
                         //validacion
             $this->validate($request,[
-                'title' => 'required',
+
                 'description' => 'required',
                'categories' => 'required',
                'nameDenouncer' => 'required',
@@ -148,7 +160,7 @@ class ComplaintController extends Controller
             ]);
         // editando datos
             $complaint = Complaint::findOrFail($id);
-            $complaint->title = $request->title;
+
             $complaint->description = $request->description;
             $complaint->categories = $request->categories;
             $complaint->nameDenouncer = $request->nameDenouncer;
@@ -193,4 +205,37 @@ class ComplaintController extends Controller
         return view('complaint.contact', ['chart' => $chart]);
 
     }*/
+
+    public function process()
+    {
+        $complaints = DB::table('complaints')
+            ->where('active', '=', '1')
+            ->get();
+
+        return view('complaint.process', ['complaints' => $complaints]);
+    }
+
+    public function success()
+    {
+        $complaints = DB::table('complaints')
+            ->where('active', '=', '0')
+            ->get();
+
+        return view('complaint.success', ['complaints' => $complaints]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+      
+        if (Request::get('ajax'))
+        {
+            $complaint = Complaint::findOrFail($request->complaint('id'));
+
+            if ($complaint->save())
+            {
+            }
+            echo json_encode('complaint.process', compact('complaint'));
+            $this->autoRender = false;
+        }
+    }
 }

@@ -23,22 +23,36 @@
                     <table class="table table-striped">
                     <tr>
                         <th>Codigo</th>
-                        <th>Titulo</th>
-                        <th>Descripcion</th>
+
+                        
                         <th>Creado</th>
                         <th>Modificado</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
+
 
                     </tr>
 
-                    <a href="{{route('complaint.create')}}" class="btn btn-info pull-right">Crear Denuncia</a><br><br>
+ <a href="{{route('complaint.create')}}" class="btn btn-info pull-right">Crear Denuncia</a>
+ {!! link_to('complaint/process', $title = 'En Proceso', $attributes = ['class' => 'btn btn-success'], $secure = null) !!}
+ {!! link_to('complaint/success', $title = 'Resueltos', $attributes = ['class' => 'btn btn-warning pull-center'], $secure = null) !!}<br><br>
                     @foreach($complaints as $complaint)
                         <tr>
                             <td>{{ $complaint->id }}</td>
-                            <td>{{ $complaint->title }}</td>
-                            <td>{{ $complaint->description }}</td>
+
+                            
                             <td>{{ $complaint->created_at->format('d-m-Y') }}</td>
                             <td>{{ $complaint->updated_at->format('d-m-Y') }}</td>
+                            <td> <?php             
+                                if($complaint->active == '0')
+                                {
+                                    echo "<span class='glyphicon glyphicon-check' title='Resuelto'></span>";
+                                }
+                                elseif($complaint->active == '1')
+                                {
+                                    echo "<span class='glyphicon glyphicon-eye-open' title='En Proceso'></span>";
+                                } ?>
+                            </td>
                             <td>
                                 <form action="{{route('complaint.destroy', $complaint->id)}}" method="post">
                                 <input type="hidden" name="_method" value="delete">

@@ -11,6 +11,8 @@
                     <h2>Reportes</h2>
 
                  {!! $chart->render() !!}
+                  {!! $chart2->render() !!}
+
       </div>
         <div class="clearfix"> </div>
      </div>
