@@ -15,16 +15,19 @@
         <div class="panel-body">
         {!! Form::model($complaint,[ 'route' => ['complaint.update', $complaint->id], 'method' => 'PUT']) !!}
         <input type="hidden" name="_method" value="PATCH">
-
-            <div class="form-group">
-                {!! Form::label('description', 'Descripción') !!}
-                {!! Form::text('description', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa una Descripción']) !!}
-            </div>
             <div class="form-group">
                 {!! Form::label('categories', 'Categoría') !!}
                 {!! Form::select('categories', ['abuse' => 'Abuso', 'homicide' => 'Homicidio', 'stole' => 'Robo'], 'mistreatment', ['class' => 'form-control', 'required'])!!}
             </div>
-             <hr>
+            <div class="form-group">
+                {!! Form::label('description', 'Descripción') !!}
+                {!! Form::text('description', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa una Descripción del hecho']) !!}
+            </div>
+                <div class="form-group">
+                    {!! Form::label('active', 'Estado') !!}
+                    {!! Form::checkbox('active', 'on', false, ['class' => 'form-control'])!!}
+                </div>
+            <hr>
              <h3>Formulario del Denunciante</h3>
              <br>
              <div class="form-group">

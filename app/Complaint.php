@@ -16,4 +16,14 @@ class Complaint extends Model
     	$this->attributes['active'] = ($value == 'on') ? '1' : '0';
     }
 
+    public function scopeName($query, $name)   
+    {
+    	//dd("scope: " . $name);
+    	if (trim($name) != "") 
+    	{
+    		$query->where('nameDenouncer', "LIKE",  "%$name%");
+    	}
+    	
+    }
+
 }

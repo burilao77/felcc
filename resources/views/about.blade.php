@@ -5,7 +5,7 @@
     @include('share.navbar')
 </div>
 <!---->
-<div class="about-sec">
+<!-- <div class="about-sec">
      <div class="container">
           <div class="about-head">
             <h2>Zonas</h2>
@@ -26,7 +26,7 @@
                  <h4>Nam interdum justo id tortor gravida.</h4>
                  <p>Vivamus id magna pretium, pretium orci nec, vestibulum enim. Vivamus sed massa porttitor, lacinia tortor a, luctus mi.
                  Donec sit amet justo sit amet risus malesuada venenatis id ac lacus.</p>
-             </div>
+             </div> -->
              <div class="clearfix"></div>
           </div>
           <div class="our_work">
@@ -54,7 +54,7 @@
 </div>
 
 <!---->
-<div class="footer">
+<!-- <div class="footer">
      <div class="container">
          <div class="ftr-sec">
              <div class="col-md-4 ftr-grid">
@@ -87,7 +87,7 @@
              <div class="clearfix"></div>
          </div>
      </div>
-</div>
+</div> -->
 <!---->
 <div class="copywrite">
      <div class="container">

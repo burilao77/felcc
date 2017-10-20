@@ -11,9 +11,9 @@
                      <li class="{{ Request::is('about') ? 'active' : '' }}">{!! link_to_action('PagesController@about', $title = 'Institución', $parameters = [], $attributes = []) !!}
                      </li>
                      <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
-                     <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Personal', $parameters = [], $attributes = []) !!}</li>
-                    <li class="{{ Request::is('complaint/show') ? 'active' : '' }}">
-                        {!! link_to('complaint/show', $title = 'Reportes', $attributes = [], $secure = null) !!}
+                     <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Registro de denuncias', $parameters = [], $attributes = []) !!}</li>
+                    <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
+                        {!! link_to('complaint/chart', $title = 'Reportes', $attributes = [], $secure = null) !!}
                     </li>
                     <!-- nab condicional-->
                      @if(Auth::guest())

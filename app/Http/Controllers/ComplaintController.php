@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Http\Request\ComplaintCreateRequest;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -23,10 +22,11 @@ class ComplaintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $complaints = Complaint::all();
+        //dd($request->get('nameDenouncer'));
+        $complaints = Complaint::name($request->get('nameDenouncer'))->orderBy('id', 'DESC')->paginate();
         return view('complaint.index', ['complaints' => $complaints]);
     }
 
@@ -47,14 +47,14 @@ class ComplaintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ComplaintCreateRequest $request)
+    public function store(Request $request)
     {
-        //
+        
          $this->validate($request,[
 
-            'description' => 'required',
-           
+                
                'categories' => 'required',
+               'description' => 'required',
                'nameDenouncer' => 'required',
                'ageDenouncer' => 'required',
                'dniDenouncer' => 'required',
@@ -66,11 +66,14 @@ class ComplaintController extends Controller
                'phoneDenounced' => 'required',
                'addressDenounced' => 'required',
             ]);
-        //guardando los datos
+         
+ 
+        //guardando los date_isodate_set()
         $complaint = new complaint;
 
-        $complaint->description = $request->description;
+        
         $complaint->active = $request->active;
+        $complaint->description = $request->description;
         $complaint->categories = $request->categories;
         $complaint->nameDenouncer = $request->nameDenouncer;
         $complaint->ageDenouncer = $request->ageDenouncer;
@@ -96,12 +99,14 @@ class ComplaintController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id = null)
     {
+        $complaint = Complaint::findOrFail($id);
+        return view('complaint.show', compact('complaint'));
         // tratando de acer el detalle
 /*        $complaint = $this->Complaint->find($id);
         return view('complaint.show', compact('complaint'));*/
-       $chart = Charts::database(Complaint::all(), 'pie', 'highcharts')
+       /*$chart = Charts::database(Complaint::all(), 'pie', 'highcharts')
       ->title("Porcentaje de Delitos")
       ->elementLabel("Total")
       ->dimensions(1000, 500)
@@ -115,8 +120,11 @@ class ComplaintController extends Controller
       ->responsive(false)
       ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
 
-        return view('complaint.show', ['chart' => $chart, 'chart2' => $chart2]);
+        return view('complaint.show', ['chart' => $chart, 'chart2' => $chart2]);*/
+    
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -145,6 +153,7 @@ class ComplaintController extends Controller
                         //validacion
             $this->validate($request,[
 
+                'active' => true,
                 'description' => 'required',
                'categories' => 'required',
                'nameDenouncer' => 'required',
@@ -161,6 +170,7 @@ class ComplaintController extends Controller
         // editando datos
             $complaint = Complaint::findOrFail($id);
 
+              $complaint->active = $request->active;
             $complaint->description = $request->description;
             $complaint->categories = $request->categories;
             $complaint->nameDenouncer = $request->nameDenouncer;
@@ -193,24 +203,32 @@ class ComplaintController extends Controller
         return redirect()->route('complaint.index')->with('alert-success', 'La denuncia fue eliminada');
     }
 
-/*    public function contact()
+   public function chart()
     {
-      $chart = Charts::database(Complaint::all(), 'bar', 'highcharts')
+      $chart = Charts::database(Complaint::all(), 'pie', 'highcharts')
       ->title("Porcentaje de Delitos")
       ->elementLabel("Total")
       ->dimensions(1000, 500)
       ->responsive(false)
-      ->groupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
+      ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
 
-        return view('complaint.contact', ['chart' => $chart]);
+          $chart2 = Charts::database(Complaint::all(), 'bar', 'highcharts')
+      ->title("Porcentaje de Delitos")
+      ->elementLabel("Total")
+      ->dimensions(1000, 500)
+      ->responsive(false)
+      ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
 
-    }*/
+        return view('complaint.chart', ['chart' => $chart, 'chart2' => $chart2]);
+
+    }
 
     public function process()
     {
         $complaints = DB::table('complaints')
             ->where('active', '=', '1')
             ->get();
+            
 
         return view('complaint.process', ['complaints' => $complaints]);
     }
@@ -224,6 +242,7 @@ class ComplaintController extends Controller
         return view('complaint.success', ['complaints' => $complaints]);
     }
 
+    
     public function updateStatus(Request $request)
     {
       

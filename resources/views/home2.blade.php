@@ -83,7 +83,7 @@
          </div>
      </div>
 </div>
-<div class="news">
+<!-- <div class="news">
      <div class="container">
          <h3>ULTIMAS NOTICIAS</h3>
           <div class="event-grids">
@@ -124,7 +124,7 @@
              <div class="clearfix"></div>
          </div>
      </div>
-</div>
+</div> -->
 <!---->
 <div class="footer">
      <div class="container">

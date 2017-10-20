@@ -7,7 +7,7 @@
 
 <div class="gallery">
      <div class="container">
-         <h2>Casos resueltos</h2>
+         <h2>Estado de Registros</h2>
 <!--          <div class="event-pics">
                 <a class="fancybox" href="images/1.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/1.jpg" class="img-style row6" alt=""><span> </span></a>
                 <a class="fancybox" href="images/2.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="images/2.jpg" class="img-style row6" alt=""><span> </span></a>
