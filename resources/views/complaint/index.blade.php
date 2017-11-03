@@ -73,13 +73,15 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <a href="{{route('complaint.edit', $complaint->id)}}" id="boton" class="btn btn-primary">Editar</a>
                                 <input type="submit" class="btn btn-danger" onclick="return confirm('Esta seguro de Eliminar esta Denuncia');" name="name" value="Eliminar">
-                             <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info">Show</a>
+                                <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"  title='Imprimir'></span></a>
+                           <!--   <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info">Show</a> -->
 
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                     </table>
+                    {{ $complaints->links() }}
         </div>
 
 @stop

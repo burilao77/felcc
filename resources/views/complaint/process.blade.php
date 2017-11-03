@@ -12,6 +12,7 @@
 <div class="container">
 <div class="about-head">
     <h2>Lista de Denuncias en Proceso</h2>
+    <h4>Total denuncias : {{ $totald }} En proceso</h4>
 </div>
 
  <div class="row">
@@ -21,7 +22,7 @@
 
                         <th>Creado</th>
                         <th>Modificado</th>
-                        <th>Estado</th>
+                        <th>Estado Denuncias</th>
                     </tr>
 
                     @foreach($complaints as $complaint)
@@ -31,18 +32,14 @@
                             <td>{{ $complaint->created_at }}</td>
                             <td>{{ $complaint->updated_at }}</td>
                             <td>            
-                                    <?php if ($complaint->active): ?>
-                                        <input type="checkbox" name="active" checked>
-                                    <?php else: ?>
-                                        <input type="checkbox" name="active">
-                                    <?php endif ?>
+                            <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info"><span class="" aria-hidden="true"  title='Ver Estado'>Ver Estado</span></a>
                             </td>
 
                         </tr>
                     @endforeach
                     </table>
         </div>
-<script>
+<!-- <script>
    
     $("[name='active']").bootstrapSwitch({
         'onText': 'Si',
@@ -66,6 +63,6 @@
         });
     });
 
-</script>
+</script> -->
 
 @stop

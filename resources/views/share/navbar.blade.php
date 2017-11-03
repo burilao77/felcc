@@ -7,14 +7,21 @@
                  <ul class="navig">
 
                       <!-- 'class' => ($this->request->params['action'] == 'home') ? 'active' : 'inactive' -->
+                    @if(Auth::guest())
                      <li class="{{ Request::is('/') ? 'active' : '' }}">{!! link_to_action('PagesController@home2', $title = 'Inicio', $parameters = [], $attributes = []) !!}</li>
                      <li class="{{ Request::is('about') ? 'active' : '' }}">{!! link_to_action('PagesController@about', $title = 'Institución', $parameters = [], $attributes = []) !!}
                      </li>
-                     <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
-                     <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Registro de denuncias', $parameters = [], $attributes = []) !!}</li>
-                    <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
+
+                     <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Lista de Denuncias', $parameters = [], $attributes = []) !!}</li>
+                    @else
+                         <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
+
+                         <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
                         {!! link_to('complaint/chart', $title = 'Reportes', $attributes = [], $secure = null) !!}
-                    </li>
+                        </li>
+                    @endif
+
+                    
                     <!-- nab condicional-->
                      @if(Auth::guest())
                     <li>{!! link_to_route('login', $title = 'Ingresar') !!}

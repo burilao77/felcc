@@ -9,6 +9,7 @@ use Session;
 use Redirect;
 use Charts;
 use App\Complaint;
+use PDF;
 
 
 class ComplaintController extends Controller
@@ -26,7 +27,7 @@ class ComplaintController extends Controller
     {
         //
         //dd($request->get('nameDenouncer'));
-        $complaints = Complaint::name($request->get('nameDenouncer'))->orderBy('id', 'DESC')->paginate();
+        $complaints = Complaint::name($request->get('nameDenouncer'))->orderBy('id', 'DESC')->paginate(3);
         return view('complaint.index', ['complaints' => $complaints]);
     }
 
@@ -47,6 +48,7 @@ class ComplaintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
         
@@ -99,10 +101,17 @@ class ComplaintController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = null)
+    public function show($id)
     {
-        $complaint = Complaint::findOrFail($id);
-        return view('complaint.show', compact('complaint'));
+         $complaint = Complaint::findOrFail($id);
+        
+         $view = view('complaint.show', compact('complaint'));
+ 
+         $pdf = \App::make('dompdf.wrapper');
+         $pdf->loadHTML($view);
+         return $pdf->stream('complaint');
+      /*  $complaint = Complaint::findOrFail($id);
+        return view('complaint.show', compact('complaint'));*/
         // tratando de acer el detalle
 /*        $complaint = $this->Complaint->find($id);
         return view('complaint.show', compact('complaint'));*/
@@ -206,20 +215,40 @@ class ComplaintController extends Controller
    public function chart()
     {
       $chart = Charts::database(Complaint::all(), 'pie', 'highcharts')
-      ->title("Porcentaje de Delitos")
+      ->title("Porcentaje de Delitos Totales")
       ->elementLabel("Total")
       ->dimensions(1000, 500)
-      ->responsive(false)
+      ->responsive(true)
       ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
+      
 
-          $chart2 = Charts::database(Complaint::all(), 'bar', 'highcharts')
-      ->title("Porcentaje de Delitos")
+          $chart2 = Charts::database(Complaint::all(), 'area', 'highcharts')
+      ->title("Porcentaje de Delitos de los últimos 14 dias")
       ->elementLabel("Total")
       ->dimensions(1000, 500)
-      ->responsive(false)
-      ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo']);
+      ->responsive(true)
+      ->GroupBy('categories', null, ['homicide' => 'Homicidio', 'abuse' => 'Abuso', 'Stole' => 'Robo'])
+      ->lastByDay(14, true);
 
-        return view('complaint.chart', ['chart' => $chart, 'chart2' => $chart2]);
+            $chart3 = Charts::database(Complaint::all(), 'donut', 'highcharts')
+      ->title("Porcentaje de Personas Denunciantes según el Género")
+      ->elementLabel("Total")
+      ->dimensions(1000, 500)
+      ->responsive(true)
+      ->GroupBy('genderDenouncer', null, ['male' => 'Hombres', 'female' => 'Mujeres']);
+      //->lastByYear(2, true);
+      
+
+          $chart4 = Charts::database(Complaint::all(), 'bar', 'highcharts')
+      ->title("Porcentaje de Personas Denunciadas según el Género")
+      ->elementLabel("Total")
+      ->dimensions(1000, 500)
+      ->responsive(true)
+      ->GroupBy('genderDenounced', null, ['male' => 'Hombres', 'female' => 'Mujeres']);
+     
+      //->lastByMonth(6, true);
+
+        return view('complaint.chart', ['chart' => $chart, 'chart2' => $chart2, 'chart3' => $chart3, 'chart4' => $chart4]);
 
     }
 
@@ -228,9 +257,10 @@ class ComplaintController extends Controller
         $complaints = DB::table('complaints')
             ->where('active', '=', '1')
             ->get();
-            
-
-        return view('complaint.process', ['complaints' => $complaints]);
+        //total denuncias en proceso con el metodo count();
+        $totald = $complaints->count();
+        
+        return view('complaint.process', ['complaints' => $complaints, 'totald' => $totald]);
     }
 
     public function success()

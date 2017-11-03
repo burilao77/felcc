@@ -7,13 +7,15 @@
 <!--contact-->
 <div class="contact">
      <div class="container">
-      <div class="main-head-section">
+      <div class="row">
                     <h2>Reportes</h2>
-
-        {!! $chart->render() !!}
-         {!! $chart2->render() !!}
-                
+        <div class="col-md-6">{!! $chart->render() !!}</div>
+        <div class="col-md-6">{!! $chart2->render() !!}</div>
       </div>
+     <div class="row">
+        <div class="col-md-6">{!! $chart3->render() !!}</div>
+        <div class="col-md-6">{!! $chart4->render() !!}</div>
+     </div>
         <div class="clearfix"> </div>
      </div>
 </div>

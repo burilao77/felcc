@@ -1,83 +1,64 @@
-@extends('master')
-  @section('content')
-<!-- banner -->
-<div class="banner2">
-    @include('share.navbar')
-</div>
-<!--contact-->
-<div class="contact">
-     <div class="container">
-      <div class="main-head-section">
-                   
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Denuncia</title>
 
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title">DETALLE DE LA DENUNCIA</h3>
-    </div>
-        <div class="panel-body">
-        {!! Form::model($complaint,[ 'route' => ['complaint.show', $complaint->id], 'method' => 'POST']) !!}
-            <table  class="table">
-                <caption></caption>
-                <thead>
-                    <tr>
-                        <th>ID Denuncia</th>
-                        <th>Tipo de Denuncia</th>
-                        <th>Descripción</th>
-                        <th>Fecha de Registro</th>
-                        <th>Fecha Modificación</th>
-                        <th>Nombre del Denunciado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{$complaint->id}}</td>
-                        <td>{{$complaint->categories}}</td>
-                        <td>{{$complaint->description}}</td>
-                        <td>{{ $complaint->created_at->format('d-m-Y')}}</td>
-                        <td>{{ $complaint->updated_at->format('d-m-Y') }}</td>
-                        <td>{{$complaint->nameDenounced}}</td>
-                    </tr>
-                </tbody>
-            </table>
-                   
-    
-        {!! Form::close() !!}
-        </div>
-    
-</div>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+ 
+  </head>
+  <body>
+    <main>
+      <h1 class="text-center"><small class="pull-left"><span>Registrado</span><br />{{ $complaint->created_at->format('d-m-Y') }}</small> Denuncia Penal <small class="pull-right"><span>Modificado</span><br />{{ $complaint->updated_at->format('d-m-Y') }}</small></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="service">Denunciante</th>
+            <th class="desc">DNI/CI</th>
+            <th>Descripcion</th>
+            <th>Tipo Denuncia</th>
+            <th>Denunciado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service">{{ $complaint->nameDenouncer }}</td>
+            <td class="desc">{{ $complaint->dniDenouncer }}</td>
+            <td class="unit">{{ $complaint->description }}</td>
+            <td class="qty">
+              @if($complaint->categories === 'homicide')
+                  Homicidio
+                  @elseif($complaint->categories === 'abuse')
+                    Abuso
+                      @else ($complaint->categories === 'Stole')
+                        Robo
+              @endif
+            </td>
+            <td class="total">{{ $complaint->nameDenounced }}</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="sub"></td>
+            <td class="sub total"></td>
+          </tr>
+          <tr>
+            <td colspan="4"></td>
+            <td class="total"></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="grand total">Firma: {{ $complaint->nameDenouncer }}</td>
 
-                
+          </tr>
+        </tbody>
+      </table>
+
       </div>
-        <div class="clearfix"> </div>
-     </div>
-</div>
-
-<!---->
-
-
-<div class="footer">
-     <div class="container">
-         <div class="ftr-sec">
-             <div class="col-md-4 ftr-grid">
-             </div>
-             <div class="col-md-4 ftr-grid2">
-             <ul>
-                </ul>
-             </div>
-             <div class="col-md-4 ftr-grid3">
-             <ul>
-                </ul>
-             </div>
-             <div class="clearfix"></div>
-         </div>
-     </div>
-</div>
-<!---->
-<div class="copywrite">
-     <div class="container">
-         <p>VERÓNICA FLORES  UMSS 2017  </p>
-     </div>
-</div>
-<!---->
-
-@stop
+      <div id="notices">
+        <div>NOTA:</div>
+        <div class="notice">Esta solo es una comprobante que realizo su denuncia.</div>
+      </div>
+    </main>
+    <footer>
+      Policia Nacional de Bolivia.
+    </footer>
+  </body>
+</html>
