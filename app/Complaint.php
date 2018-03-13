@@ -26,4 +26,10 @@ class Complaint extends Model
     	
     }
 
+    public function evidences()
+    {
+        return $this->hasMany('App/Evidence');
+    }
+
+
 }

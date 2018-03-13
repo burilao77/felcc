@@ -24,9 +24,17 @@ Route::get('/staff', 'PagesController@staff');
 Route::get('complaint/process', 'ComplaintController@process');
 Route::get('complaint/success', 'ComplaintController@success');
 Route::get('complaint/chart', 'ComplaintController@chart');
+//Route::get('complaint/detalle/{$complaint->id}', 'ComplaintController@detalle');
+//
+Route::get('detalle-denuncia/{id}', [
+    'uses' => 'ComplaintController@detalle',
+    'as' => 'complaint.detalle'
+]);
 
 Route::group(['middleware' => ['web']], function(){
     Route::resource('complaint', 'ComplaintController');
+    Route::resource('evidence', 'EvidenceController');
+
 });
 
 

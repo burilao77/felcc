@@ -8,6 +8,16 @@
 <div class="gallery">
      <div class="container">
          <h2>Estado de Registros</h2>
+<!-- <div class="pull-left">
+{!! Form::open(['route' => 'complaint.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'])!!}
+
+  <div class="form-group">
+
+    {!! Form::text('nameDenouncer', null, ['class' => 'form-control', 'placeholder' => 'Nombre Denunciante']) !!}
+    <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+{!! Form::close() !!}
+</div> -->
         <table class="table">
             <caption>Todas las Denuncias</caption>
             <thead>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+//use Illuminate\Support\Collection;
 use Session;
 use Redirect;
 use Charts;
@@ -27,7 +29,7 @@ class ComplaintController extends Controller
     {
         //
         //dd($request->get('nameDenouncer'));
-        $complaints = Complaint::name($request->get('nameDenouncer'))->orderBy('id', 'DESC')->paginate(3);
+        $complaints = Complaint::name($request->get('nameDenouncer'))->orderBy('id', 'DESC')->paginate(5);
         return view('complaint.index', ['complaints' => $complaints]);
     }
 
@@ -261,6 +263,19 @@ class ComplaintController extends Controller
         $totald = $complaints->count();
         
         return view('complaint.process', ['complaints' => $complaints, 'totald' => $totald]);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function detalle($id)
+    {
+       $complaint = Complaint::findOrFail($id);
+       $evidencias = DB::table('evidence')->where('evidence.complaint_id', '=', $complaint->id )->get();
+       //dd($evidencias);
+        return view('complaint.detalle', ['complaint'=>$complaint, 'evidencias' => $evidencias]);
     }
 
     public function success()

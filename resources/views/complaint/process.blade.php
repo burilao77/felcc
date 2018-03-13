@@ -32,7 +32,8 @@
                             <td>{{ $complaint->created_at }}</td>
                             <td>{{ $complaint->updated_at }}</td>
                             <td>            
-                            <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info"><span class="" aria-hidden="true"  title='Ver Estado'>Ver Estado</span></a>
+                       {!! link_to_action('ComplaintController@detalle', $title = 'Detalle', $parameters = [$complaint->id], $attributes = ['class' => 'btn btn-warning']) !!}
+
                             </td>
 
                         </tr>

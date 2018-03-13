@@ -35,7 +35,7 @@
 
  <a href="{{route('complaint.create')}}" class="btn btn-info pull-center">Crear Denuncia</a>
 
- {!! link_to('complaint/process', $title = 'En Proceso', $attributes = ['class' => 'btn btn-success'], $secure = null) !!}
+<!--  {!! link_to('complaint/process', $title = 'En Proceso', $attributes = ['class' => 'btn btn-success'], $secure = null) !!} -->
  {!! link_to('complaint/success', $title = 'Resueltos', $attributes = ['class' => 'btn btn-warning pull-center'], $secure = null) !!}
 <!-- buscador -->
 <div class="pull-right app-pull-right">
@@ -75,6 +75,7 @@
                                 <input type="submit" class="btn btn-danger" onclick="return confirm('Esta seguro de Eliminar esta Denuncia');" name="name" value="Eliminar">
                                 <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"  title='Imprimir'></span></a>
                            <!--   <a href="{{route('complaint.show', $complaint->id)}}" class="btn btn-info">Show</a> -->
+                           
 
                                 </form>
                             </td>

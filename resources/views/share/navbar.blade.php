@@ -14,10 +14,23 @@
 
                      <li class="{{ Request::is('staff') ? 'active' : '' }}">{!! link_to_action('PagesController@staff', $title = 'Lista de Denuncias', $parameters = [], $attributes = []) !!}</li>
                     @else
-                         <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Denuncias<span class="caret"></span> </a>
+                            <ul class="dropdown-menu">
+                                <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
+                                <li><a href="mailto:joe@example.com?subject=feedback" "email me">email me</a></li>
+                                <li><a href="mailto:joe@example.com?subject=feedback" "email me">email me</a></li>
+                            </ul>
+                        </li> 
 
                          <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
                         {!! link_to('complaint/chart', $title = 'Reportes', $attributes = [], $secure = null) !!}
+                        </li>
+                         <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
+                        {!! link_to('complaint/chart', $title = 'Categorias', $attributes = [], $secure = null) !!}
+                        </li>
+                         <li class="{{ Request::is('complaint/process') ? 'active' : '' }}">
+                        {!! link_to('complaint/process', $title = 'Control y Seguimiento', $attributes = [], $secure = null) !!}
                         </li>
                     @endif
 
