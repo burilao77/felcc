@@ -24,6 +24,7 @@
                 <tr>
                     <th>nombre Denunciante:</th>
                     <th>fecha de la denuncia</th>
+                    <th>Estado de la Denuncia</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,14 @@
                 <tr>
                     <td>{{ $complaint->nameDenouncer }}</td>
                     <td>{{ $complaint->created_at }}</td>
+                    <td>
+                    @if($complaint->active === 1)
+                        <button type="button" class="btn btn-warning">En Proceso</button>
+                    @else ($complaint->active === 0)
+                        <button type="button" class="btn btn-success">Resuelto</button>
+                    @endif
+                    </td>
+
                 </tr>
                 @endforeach
             </tbody>
