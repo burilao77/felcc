@@ -12,7 +12,7 @@
 <br><br>
 <div class="container">
     <div class="about-head">
-        <h2>Detalle de denuncia {{ $complaint->id }}</h2>
+        <h2>Detalle de la Denuncia</h2>
     </div>
 
      <div class="row">
@@ -20,17 +20,17 @@
             <div class="panel-body">
             {!! Form::model($complaint,[ 'route' => ['complaint.detalle', $complaint->id], 'method' => 'POST']) !!}
 
-                <h3 class="info"><strong>Descripción:</strong>&nbsp;&nbsp;{{$complaint->description}}</h3>
-                <h3 class="info"><strong>Denunciado por:</strong>&nbsp;&nbsp;{{ $complaint->nameDenouncer}}</h3>
+                <h4 class="info"><strong>Descripción:</strong>&nbsp;&nbsp;{{$complaint->description}}</h4><br>
+                <h4 class="info"><strong>Denunciado por:</strong>&nbsp;&nbsp;{{ $complaint->nameDenouncer}}</h4>
 
               
             {!! Form::close() !!}
             </div>
             </div>           
      </div>
-
-        <div class="col-md-12">
-                <h3>Agregar Evidencias</strong></h3>
+    
+        <div class="col-md-12" id="borde-evento"><br>
+                <h3 style="text-align:center"><strong>Agregar Evidencias</strong></h3>
 
                         <div class="panel-body">
                                 {!! Form::open(['route' => 'evidence.store', 'method' => 'POST']) !!}
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="form-group">
                                         {!! Form::label('descripcion', 'Descripción') !!}
-                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese la Descripción']) !!}
+                                        {!! Form::textarea('descripcion', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese la Descripción', 'rows' => 3]) !!}
                                     </div>
                                     <div class="form-group">
                                         {!! Form::submit('Guardar Evidencia', ['class' => 'btn btn-info']) !!}
@@ -54,19 +54,19 @@
                         </div>
                 </div>
         </div>
-
+<br>
 
 <div class="container">
-    <h4>Cronología de Evidencias</h4>
+    <h3 style="text-align:center"><strong>Cronología de Evidencias</strong></h3>
     @foreach ($evidencias as $evidencia) 
     <ul class="timeline">
         <li>
-          <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+          <div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">{{$evidencia->title }}</h4>
+              <h4 class="timeline-title"><strong>{{$evidencia->title }}</strong></h4><br>
               <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ $evidencia->created_at }}</small></p>
-            </div>
+            </div><br>
             <div class="timeline-body">
               <p>{{$evidencia->descripcion }}</p>
             </div>

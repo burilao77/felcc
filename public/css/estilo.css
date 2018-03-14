@@ -124,3 +124,9 @@
 .timeline-body > p + p {
   margin-top: 5px;
 }
+
+#borde-evento{
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: #4dc47d;
+}

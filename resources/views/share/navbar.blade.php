@@ -17,17 +17,17 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Denuncias<span class="caret"></span> </a>
                             <ul class="dropdown-menu">
-                                <li class="{{ Request::is('complaint') ? 'active' : '' }}">{!! link_to_action('ComplaintController@index', $title = 'Denuncias', $parameters = [], $attributes = []) !!}</li>
-                                <li><a href="mailto:joe@example.com?subject=feedback" "email me">email me</a></li>
-                                <li><a href="mailto:joe@example.com?subject=feedback" "email me">email me</a></li>
+                                <li>{!! link_to_action('ComplaintController@index', $title = 'Lista Denuncias', $parameters = [], $attributes = []) !!}</li>
+                                <li>{!! link_to_action('ComplaintController@create', $title = 'Crear Denuncias', $parameters = [], $attributes = []) !!}</li>
+                                
                             </ul>
                         </li> 
 
                          <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
                         {!! link_to('complaint/chart', $title = 'Reportes', $attributes = [], $secure = null) !!}
                         </li>
-                         <li class="{{ Request::is('complaint/chart') ? 'active' : '' }}">
-                        {!! link_to('complaint/chart', $title = 'Categorias', $attributes = [], $secure = null) !!}
+                         <li class="{{ Request::is('complaint/success') ? 'active' : '' }}">
+                        {!! link_to('complaint/success', $title = 'Denuncias Resueltas', $attributes = [], $secure = null) !!}
                         </li>
                          <li class="{{ Request::is('complaint/process') ? 'active' : '' }}">
                         {!! link_to('complaint/process', $title = 'Control y Seguimiento', $attributes = [], $secure = null) !!}

@@ -19,7 +19,7 @@
                     <table class="table table-striped">
                     <tr>
                         <th>Codigo</th>
-
+                        <th>Denunciado</th>
                         <th>Creado</th>
                         <th>Modificado</th>
                         <th>Estado Denuncias</th>
@@ -28,11 +28,11 @@
                     @foreach($complaints as $complaint)
                         <tr data-id="<?= $complaint->id ?>">
                             <td>{{ $complaint->id }}</td>
-  
+                            <td>{{ $complaint->nameDenounced }}</td>
                             <td>{{ $complaint->created_at }}</td>
                             <td>{{ $complaint->updated_at }}</td>
                             <td>            
-                       {!! link_to_action('ComplaintController@detalle', $title = 'Detalle', $parameters = [$complaint->id], $attributes = ['class' => 'btn btn-warning']) !!}
+                       {!! link_to_action('ComplaintController@detalle', $title = 'Ver Estado', $parameters = [$complaint->id], $attributes = ['class' => 'btn btn-warning']) !!}
 
                             </td>
 

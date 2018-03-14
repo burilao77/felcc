@@ -36,7 +36,7 @@
  <a href="{{route('complaint.create')}}" class="btn btn-info pull-center">Crear Denuncia</a>
 
 <!--  {!! link_to('complaint/process', $title = 'En Proceso', $attributes = ['class' => 'btn btn-success'], $secure = null) !!} -->
- {!! link_to('complaint/success', $title = 'Resueltos', $attributes = ['class' => 'btn btn-warning pull-center'], $secure = null) !!}
+<!--  {!! link_to('complaint/success', $title = 'Resueltos', $attributes = ['class' => 'btn btn-warning pull-center'], $secure = null) !!} -->
 <!-- buscador -->
 <div class="pull-right app-pull-right">
 {!! Form::open(['route' => 'complaint.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'])!!}
